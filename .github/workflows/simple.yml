@@ -1,0 +1,16 @@
+name: Webhook Tester
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: '0 0 * * *'
+
+jobs:
+  ping:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Send test webhook
+        run: |
+          curl -X POST https://webhook.site/a72752d1-10cf-4363-bdec-e0341f576244 \
+          -H "Content-Type: application/json" \
+          -d '{"message": "Hello from GitHub Actions!"}'
